@@ -6,6 +6,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @bookmarks = @list.bookmarks
   end
 
   def new
@@ -23,9 +24,6 @@ class ListsController < ApplicationController
 
   private
 
-  def set_list
-    @list = List.find(params[:list_id])
-  end
 
   def list_params
     params.require(:list).permit(:name)
